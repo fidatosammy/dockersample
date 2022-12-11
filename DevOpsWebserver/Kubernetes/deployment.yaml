@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: devopsserver
+  labels:
+    app: devopsserver
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devopsserver
+
+  template:
+    metadata:
+      labels:
+        app: devopsserver
+    spec:
+      containers:
+      - name:  devopsserver
+        image: sammyfidato/devopsserver:<buildnumber>
+        ports:
+        - containerPort: 80
